@@ -1,0 +1,9 @@
+﻿global using System.Reflection;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using ThreePillers.AddressBook.Domain.Abstractions;
+global using ThreePillers.AddressBook.Domain.Entities.Departments;
+global using ThreePillers.AddressBook.infrastructure.Context;
+global using ThreePillers.AddressBook.infrastructure.Repositories;
