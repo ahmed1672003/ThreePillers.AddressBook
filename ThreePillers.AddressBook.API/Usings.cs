@@ -1,3 +1,10 @@
-﻿global using Microsoft.AspNetCore.Diagnostics;
+﻿global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
 global using ThreePillers.AddressBook.Application;
+global using ThreePillers.AddressBook.Application.Bases.Responses;
+global using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Create;
+global using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Delete;
+global using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Update;
+global using ThreePillers.AddressBook.Application.UseCases.Departments.Dtos;
+global using ThreePillers.AddressBook.Application.UseCases.Departments.Queries.GetById;
 global using ThreePillers.AddressBook.infrastructure;

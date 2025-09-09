@@ -1,13 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using ThreePillers.AddressBook.Application.Bases.Responses;
-using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Create;
-using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Delete;
-using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Update;
-using ThreePillers.AddressBook.Application.UseCases.Departments.Dtos;
-using ThreePillers.AddressBook.Application.UseCases.Departments.Queries.GetById;
-
-namespace ThreePillers.AddressBook.API.Controllers;
+﻿namespace ThreePillers.AddressBook.API.Controllers;
 
 [Route("api/v1/department")]
 [ApiController]
