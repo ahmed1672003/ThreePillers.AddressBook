@@ -7,4 +7,9 @@ global using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.
 global using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Update;
 global using ThreePillers.AddressBook.Application.UseCases.Departments.Dtos;
 global using ThreePillers.AddressBook.Application.UseCases.Departments.Queries.GetById;
+global using ThreePillers.AddressBook.Application.UseCases.Jobs.Commands.Create;
+global using ThreePillers.AddressBook.Application.UseCases.Jobs.Commands.Delete;
+global using ThreePillers.AddressBook.Application.UseCases.Jobs.Commands.Update;
+global using ThreePillers.AddressBook.Application.UseCases.Jobs.Dtos;
+global using ThreePillers.AddressBook.Application.UseCases.Jobs.Queries.GetById;
 global using ThreePillers.AddressBook.infrastructure;

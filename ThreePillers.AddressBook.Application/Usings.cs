@@ -1,4 +1,5 @@
-﻿global using System.Net;
+﻿global using System.Data;
+global using System.Net;
 global using System.Reflection;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
@@ -13,6 +14,10 @@ global using ThreePillers.AddressBook.Application.Exceptions;
 global using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Create;
 global using ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Update;
 global using ThreePillers.AddressBook.Application.UseCases.Departments.Dtos;
+global using ThreePillers.AddressBook.Application.UseCases.Jobs.Commands.Create;
+global using ThreePillers.AddressBook.Application.UseCases.Jobs.Commands.Update;
+global using ThreePillers.AddressBook.Application.UseCases.Jobs.Dtos;
 global using ThreePillers.AddressBook.Domain.Abstractions;
 global using ThreePillers.AddressBook.Domain.Entities.Departments;
+global using ThreePillers.AddressBook.Domain.Entities.Jobs;
 global using ThreePillers.AddressBook.Domain.Enums;

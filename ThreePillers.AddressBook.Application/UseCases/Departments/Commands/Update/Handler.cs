@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Update;
+﻿namespace ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Update;
 
 internal sealed class UpdateDepartmentHandler(
     IUnitOfWork unitOfWork,

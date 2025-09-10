@@ -33,7 +33,6 @@ public sealed class ExceptionHandler() : IMiddleware
         {
             UnauthorizedAccessException => ((int)HttpStatusCode.Unauthorized, ex.Message),
             ValidationException => ((int)HttpStatusCode.BadRequest, ex.Message),
-            DomainException => ((int)HttpStatusCode.BadRequest, ex.Message),
             _
                 => (
                     (int)HttpStatusCode.InternalServerError,

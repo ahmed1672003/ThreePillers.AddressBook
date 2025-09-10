@@ -1,4 +1,6 @@
-﻿namespace ThreePillers.AddressBook.infrastructure;
+﻿using ThreePillers.AddressBook.Domain.Entities.Jobs;
+
+namespace ThreePillers.AddressBook.infrastructure;
 
 public static class InfrastructureDependencies
 {
@@ -13,6 +15,7 @@ public static class InfrastructureDependencies
         services
             .AddScoped(typeof(IRepository<>), typeof(Repository<>))
             .AddScoped<IUnitOfWork, UnitOfWork>()
+            .AddScoped<IJobRepository, JobRepository>()
             .AddScoped<IDepartmentRepository, DepartmentRepository>();
         return services;
     }

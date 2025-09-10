@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThreePillers.AddressBook.infrastructure.Context;
 
@@ -10,9 +11,11 @@ using ThreePillers.AddressBook.infrastructure.Context;
 namespace ThreePillers.AddressBook.infrastructure.Context.Migrations
 {
     [DbContext(typeof(AddressBookDbContext))]
-    partial class AddressBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250910045650_AddJobEntityMigration")]
+    partial class AddJobEntityMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

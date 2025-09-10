@@ -5,5 +5,6 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using ThreePillers.AddressBook.Domain.Abstractions;
 global using ThreePillers.AddressBook.Domain.Entities.Departments;
+global using ThreePillers.AddressBook.Domain.Entities.Jobs;
 global using ThreePillers.AddressBook.infrastructure.Context;
 global using ThreePillers.AddressBook.infrastructure.Repositories;
