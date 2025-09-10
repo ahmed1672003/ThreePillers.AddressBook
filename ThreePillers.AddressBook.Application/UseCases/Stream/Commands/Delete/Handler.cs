@@ -1,4 +1,4 @@
-﻿namespace ThreePillers.AddressBook.Application.UseCases.Stream.Commands.Upload;
+﻿namespace ThreePillers.AddressBook.Application.UseCases.Stream.Commands.Delete;
 
 internal sealed class DeleteStreamHandler(ISupabaseStorage supabaseStorage)
     : IRequestHandler<DeleteStreamCommand, Response>

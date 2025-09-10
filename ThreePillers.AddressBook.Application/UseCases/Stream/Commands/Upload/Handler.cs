@@ -1,6 +1,4 @@
-﻿using ThreePillers.AddressBook.infrastructure.Storage;
-
-namespace ThreePillers.AddressBook.Application.UseCases.Stream.Commands.Upload;
+﻿namespace ThreePillers.AddressBook.Application.UseCases.Stream.Commands.Upload;
 
 internal sealed class UploadStreamHandler(
     ISupabaseStorage supabaseStorage,

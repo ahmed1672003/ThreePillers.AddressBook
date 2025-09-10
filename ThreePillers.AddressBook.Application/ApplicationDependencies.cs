@@ -13,6 +13,7 @@ public static class ApplicationDependencies
         });
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddScoped<IPasswordHasher<AddressBookEntry>, PasswordHasher<AddressBookEntry>>();
         return services;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using ThreePillers.AddressBook.Domain.Enums;
 
 namespace ThreePillers.AddressBook.Domain.Abstractions;
 
@@ -22,4 +23,18 @@ public interface IRepository<TEntity>
         CancellationToken cancellationToken = default
     );
     Task<bool> AnyAsync(CancellationToken cancellationToken = default);
+
+    Task<IEnumerable<TEntity>> PaginateAsync(
+        int size,
+        int index,
+        string search,
+        SortDirection sortDirection = SortDirection.Ascending,
+        CancellationToken cancellationToken = default
+    );
+
+    Task<int> CountAsync(CancellationToken cancellationToken = default);
+    Task<int> CountAsync(
+        Expression<Func<TEntity, bool>> filter,
+        CancellationToken cancellationToken = default
+    );
 }

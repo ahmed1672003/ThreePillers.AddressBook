@@ -1,4 +1,4 @@
-﻿namespace ThreePillers.AddressBook.infrastructure.Storage;
+﻿namespace ThreePillers.AddressBook.Application.Abstractions.Storage;
 
 public sealed class UploadSupabaseStream : IUploadSupabaseStream
 {

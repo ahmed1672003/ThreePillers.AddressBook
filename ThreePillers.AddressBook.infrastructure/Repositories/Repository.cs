@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-
-namespace ThreePillers.AddressBook.infrastructure.Repositories;
+﻿namespace ThreePillers.AddressBook.infrastructure.Repositories;
 
 internal class Repository<TEntity> : IRepository<TEntity>
     where TEntity : Entity
@@ -41,4 +38,25 @@ internal class Repository<TEntity> : IRepository<TEntity>
         long id,
         CancellationToken cancellationToken = default
     ) => _entities.AsNoTracking().FirstAsync(x => x.Id == id, cancellationToken);
+
+    public async Task<IEnumerable<TEntity>> PaginateAsync(
+        int size,
+        int index,
+        string search,
+        SortDirection sortDirection = SortDirection.Ascending,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var query = _entities.AsNoTracking().AsQueryable();
+        query = query.Paginate(index, size);
+        return await query.ToListAsync(cancellationToken);
+    }
+
+    public Task<int> CountAsync(CancellationToken cancellationToken = default) =>
+        _entities.CountAsync(cancellationToken);
+
+    public Task<int> CountAsync(
+        Expression<Func<TEntity, bool>> filter,
+        CancellationToken cancellationToken = default
+    ) => _entities.CountAsync(filter, cancellationToken);
 }

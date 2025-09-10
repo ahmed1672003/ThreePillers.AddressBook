@@ -1,9 +1,12 @@
-﻿namespace ThreePillers.AddressBook.API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace ThreePillers.AddressBook.API.Controllers;
 
 [Route("api/v1/stream")]
 [ApiController]
 public class StreamController(IMediator mediator, ISupabaseStorage supabaseStorage) : ControllerBase
 {
+    [AllowAnonymous]
     [HttpPost]
     [EnableRateLimiting("PublicStream")]
     public async Task<ActionResult<ISupabaseStream>> UploadAsync(
@@ -11,6 +14,7 @@ public class StreamController(IMediator mediator, ISupabaseStorage supabaseStora
         CancellationToken cancellationToken = default
     ) => Ok(await mediator.Send(command, cancellationToken));
 
+    [AllowAnonymous]
     [HttpDelete]
     public async Task<ActionResult<Response>> DeleteAsync(
         [FromHeader] string url,

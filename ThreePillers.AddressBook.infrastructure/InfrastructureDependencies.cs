@@ -14,8 +14,10 @@ public static class InfrastructureDependencies
             .AddScoped(typeof(IRepository<>), typeof(Repository<>))
             .AddScoped<IUnitOfWork, UnitOfWork>()
             .AddScoped<IJobRepository, JobRepository>()
+            .AddScoped<IAddressBookEntryRepository, AddressBookEntryRepository>()
             .AddScoped<IDepartmentRepository, DepartmentRepository>();
         services.AddScoped<IUserContext, UserContext>();
+        services.AddScoped<ITokenManager, TokenManager>();
         services.AddScoped<ISupabaseStorage, SupabaseStorage>(cfg =>
         {
             var supabaseClient = new Client(

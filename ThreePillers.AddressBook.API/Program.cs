@@ -1,7 +1,3 @@
-using System.Threading.RateLimiting;
-using Microsoft.AspNetCore.Http.Features;
-using ThreePillers.AddressBook.Application.Middlewares;
-
 namespace ThreePillers.AddressBook.API;
 
 public class Program
@@ -48,6 +44,74 @@ public class Program
         {
             options.Limits.MaxRequestBodySize = 5 * 1024 * 1024;
         });
+        builder.Services.Configure<TokenSettings>(
+            builder.Configuration.GetSection(nameof(TokenSettings))
+        );
+        var tokenSettings = builder
+            .Configuration.GetSection(nameof(TokenSettings))
+            .Get<TokenSettings>();
+        builder.Services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc(
+                "v1",
+                new OpenApiInfo { Title = "3pillars.addressbook.api", Version = "v1" }
+            );
+            options.DescribeAllParametersInCamelCase();
+            options.InferSecuritySchemes();
+            options.AddSecurityDefinition(
+                "Bearer",
+                new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter a valid token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer",
+                }
+            );
+            options.AddSecurityRequirement(
+                new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer",
+                            },
+                        },
+                        new string[] { }
+                    },
+                }
+            );
+        });
+
+        builder
+            .Services.AddAuthentication(o =>
+            {
+                o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(o =>
+            {
+                o.RequireHttpsMetadata = false;
+                o.SaveToken = false;
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = tokenSettings.Issuer,
+                    ValidAudience = tokenSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(tokenSettings.Secret)
+                    ),
+                    ClockSkew = TimeSpan.Zero,
+                };
+            });
         var app = builder.Build();
         app.UseMiddleware<ExceptionHandler>();
         app.UseSwagger();
