@@ -56,4 +56,13 @@ internal sealed class AddressBookEntryRepository
 
         return await query.ToListAsync(cancellationToken);
     }
+
+    public async Task<IEnumerable<AddressBookEntry>> LoadAllForGenerationAsync(
+        CancellationToken cancellationToken = default
+    ) =>
+        await _entities
+            .AsNoTracking()
+            .Include(x => x.Job)
+            .Include(x => x.Department)
+            .ToListAsync(cancellationToken);
 }

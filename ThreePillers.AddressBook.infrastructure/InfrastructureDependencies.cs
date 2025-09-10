@@ -1,4 +1,6 @@
-﻿namespace ThreePillers.AddressBook.infrastructure;
+﻿using ThreePillers.AddressBook.Application.Abstractions.XLSX;
+
+namespace ThreePillers.AddressBook.infrastructure;
 
 public static class InfrastructureDependencies
 {
@@ -18,6 +20,7 @@ public static class InfrastructureDependencies
             .AddScoped<IDepartmentRepository, DepartmentRepository>();
         services.AddScoped<IUserContext, UserContext>();
         services.AddScoped<ITokenManager, TokenManager>();
+        services.AddScoped<IXLSXManager, XLSXManager>();
         services.AddScoped<ISupabaseStorage, SupabaseStorage>(cfg =>
         {
             var supabaseClient = new Client(

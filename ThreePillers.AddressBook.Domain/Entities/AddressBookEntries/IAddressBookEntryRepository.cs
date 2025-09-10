@@ -20,4 +20,8 @@ public interface IAddressBookEntryRepository : IRepository<AddressBookEntry>
         SortDirection sortDirection = SortDirection.Ascending,
         CancellationToken cancellationToken = default
     );
+
+    Task<IEnumerable<AddressBookEntry>> LoadAllForGenerationAsync(
+        CancellationToken cancellationToken = default
+    );
 }

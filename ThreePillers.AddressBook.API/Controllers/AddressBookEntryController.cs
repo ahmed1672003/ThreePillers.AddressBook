@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using ThreePillers.AddressBook.Application.UseCases.AddressBookEntries.Commands.Update;
-using ThreePillers.AddressBook.Application.UseCases.AddressBookEntries.Queries.Pagiante;
+﻿using ThreePillers.AddressBook.Application.UseCases.AddressBookEntries.Queries.GenerateXLSX;
 
 namespace ThreePillers.AddressBook.API.Controllers;
 
@@ -47,8 +45,14 @@ public class AddressBookEntryController(IMediator mediator) : ControllerBase
 
     [Authorize]
     [HttpDelete("{id:long}")]
-    public async Task<ActionResult<PaginationResponse<IEnumerable<JobDto>>>> GetByIdAsync(
+    public async Task<ActionResult<Response>> GetByIdAsync(
         [FromRoute] long id,
         CancellationToken cancellationToken = default
     ) => Ok(await mediator.Send(new DeleteUserCommand(id), cancellationToken));
+
+    [Authorize]
+    [HttpGet("xlsx")]
+    public async Task<ActionResult<ISupabaseStream>> GetnerateXLSXAsync(
+        CancellationToken cancellationToken = default
+    ) => Ok(await mediator.Send(new GenerateXLSXQuery(), cancellationToken));
 }

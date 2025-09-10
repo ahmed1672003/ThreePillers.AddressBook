@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-
-namespace ThreePillers.AddressBook.API.Controllers;
+﻿namespace ThreePillers.AddressBook.API.Controllers;
 
 [Route("api/v1/stream")]
 [ApiController]

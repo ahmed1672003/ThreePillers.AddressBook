@@ -1,4 +1,4 @@
-﻿namespace ThreePillers.AddressBook.Application.UseCases.Departments.Commands.Delete;
+﻿namespace ThreePillers.AddressBook.Application.UseCases.AddressBookEntries.Commands.Delete;
 
 public sealed class DeleteUserValidator : AbstractValidator<DeleteUserCommand>
 {
