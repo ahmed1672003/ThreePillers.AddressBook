@@ -1,3 +1,5 @@
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.Http.Features;
 using ThreePillers.AddressBook.Application.Middlewares;
 
 namespace ThreePillers.AddressBook.API;
@@ -15,6 +17,37 @@ public class Program
             .Services.RegisterApplicationDependencies()
             .RegisterInfrastructureDependencies(builder.Configuration);
         builder.Services.AddScoped<ExceptionHandler>();
+        builder.Services.AddRateLimiter(options =>
+        {
+            options.AddPolicy(
+                "PublicStream",
+                httpContext =>
+                {
+                    var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
+
+                    return RateLimitPartition.GetFixedWindowLimiter(
+                        ipAddress,
+                        _ => new FixedWindowRateLimiterOptions
+                        {
+                            PermitLimit = 5,
+                            Window = TimeSpan.FromMinutes(1),
+                            QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                            QueueLimit = 0
+                        }
+                    );
+                }
+            );
+
+            options.RejectionStatusCode = 429;
+        });
+        builder.Services.Configure<FormOptions>(options =>
+        {
+            options.MultipartBodyLengthLimit = 5 * 1024 * 1024;
+        });
+        builder.WebHost.ConfigureKestrel(options =>
+        {
+            options.Limits.MaxRequestBodySize = 5 * 1024 * 1024;
+        });
         var app = builder.Build();
         app.UseMiddleware<ExceptionHandler>();
         app.UseSwagger();

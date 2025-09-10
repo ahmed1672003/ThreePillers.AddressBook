@@ -1,6 +1,4 @@
-﻿using ThreePillers.AddressBook.Domain.Entities.Jobs;
-
-namespace ThreePillers.AddressBook.infrastructure;
+﻿namespace ThreePillers.AddressBook.infrastructure;
 
 public static class InfrastructureDependencies
 {
@@ -17,6 +15,16 @@ public static class InfrastructureDependencies
             .AddScoped<IUnitOfWork, UnitOfWork>()
             .AddScoped<IJobRepository, JobRepository>()
             .AddScoped<IDepartmentRepository, DepartmentRepository>();
+        services.AddScoped<IUserContext, UserContext>();
+        services.AddScoped<ISupabaseStorage, SupabaseStorage>(cfg =>
+        {
+            var supabaseClient = new Client(
+                SupabaseSettings.SupabaseUrl,
+                new ClientOptions() { HttpUploadTimeout = TimeSpan.FromMinutes(5) },
+                new() { { "Authorization", SupabaseSettings.SupabaseKey } }
+            );
+            return new SupabaseStorage(supabaseClient);
+        });
         return services;
     }
 }

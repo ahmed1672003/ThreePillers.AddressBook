@@ -8,6 +8,7 @@ global using FluentValidation;
 global using MediatR;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.Extensions.DependencyInjection;
+global using ThreePillers.AddressBook.Application.Abstractions.Storage;
 global using ThreePillers.AddressBook.Application.Bases.Responses;
 global using ThreePillers.AddressBook.Application.Behaviors;
 global using ThreePillers.AddressBook.Application.Exceptions;
