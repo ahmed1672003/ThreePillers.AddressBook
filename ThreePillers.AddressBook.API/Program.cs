@@ -88,6 +88,10 @@ public class Program
             );
         });
 
+        builder.Services.AddCors(cfg =>
+            cfg.AddPolicy("all", x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin())
+        );
+
         builder
             .Services.AddAuthentication(o =>
             {
@@ -114,6 +118,7 @@ public class Program
             });
         var app = builder.Build();
         app.UseMiddleware<ExceptionHandler>();
+        app.UseCors("all");
         app.UseSwagger();
         app.UseSwaggerUI();
         app.UseHttpsRedirection();
