@@ -31,6 +31,7 @@ internal sealed class TokenManager : ITokenManager
         var refreshToken = GetRefreshToken();
         return new TokenDto()
         {
+            UserId = addressBookEntry.Id,
             AccessToken = accessToken,
             ExpiredIn = (expireDate - DateTime.UtcNow).TotalHours,
             RefreshToken = refreshToken,
