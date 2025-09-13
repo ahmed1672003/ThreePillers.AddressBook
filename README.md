@@ -205,16 +205,6 @@ Download link:
 https://hjrkjcfhkhesbbkkjoon.supabase.co/storage/v1/object/public/3pillars/exports/users.xlsx
 ```
 
----
-
-## 🧱 Considerations
-- **No Visual Studio scaffolding** was used.
-- Fully **responsive** design supported by the frontend.
-- All forms include **validation** for correct data entry.
-- Deployment-ready for free hosting using **MonsterASP SQL Server free plan**.
-
----
-
 ## 🧑‍💻 Author
 **Ahmed Adel Basha**  
 Software Engineer | [GitHub](https://github.com/ahmed1672003)
