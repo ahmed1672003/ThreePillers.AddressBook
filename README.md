@@ -217,7 +217,7 @@ https://hjrkjcfhkhesbbkkjoon.supabase.co/storage/v1/object/public/3pillars/expor
 
 ## 🧑‍💻 Author
 **Ahmed Adel Basha**  
-.NET Backend Developer | [GitHub](https://github.com/ahmed1672003)
+Software Engineer | [GitHub](https://github.com/ahmed1672003)
 
 ---
 © 2025 Ahmed Adel Basha
