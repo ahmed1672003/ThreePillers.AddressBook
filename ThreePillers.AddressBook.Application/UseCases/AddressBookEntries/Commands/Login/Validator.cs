@@ -9,6 +9,8 @@ public sealed class LoginValidator : AbstractValidator<LoginCommand>
         IPasswordHasher<AddressBookEntry> passwordHasher
     )
     {
+        ClassLevelCascadeMode = CascadeMode.Stop;
+        RuleLevelCascadeMode = CascadeMode.Stop;
         RuleFor(x => x.Email)
             .NotNull()
             .WithMessage("Email is required")
