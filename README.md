@@ -42,12 +42,20 @@ It provides a set of RESTful APIs to manage address book entries, including CRUD
   - Built using **N-Tier/Onion Architecture** for maintainability and scalability.
   - **Code-First EF Core** approach to generate the database.
 
+- **Supabase Storage**
+  - All files (like user photos and exported Excel files) are stored in **Supabase Storage**.
+  - To **download any file**, you **must prepend** the following base URL:
+    ```
+    https://hjrkjcfhkhesbbkkjoon.supabase.co/storage/v1/object/public/3pillars/
+    ```
+
 ---
 
 ## 🛠 Tech Stack
 - **.NET Core 8 Web API**
 - **Entity Framework Core (Code-First)**
-- **SQL Server**
+- **SQL Server** (hosted on [MonsterASP Free Plan](https://www.smarterasp.net/))
+- **Supabase Storage** (for file management)
 - **AutoMapper** (for DTO mapping)
 - **FluentValidation** (for input validation)
 - **JWT Authentication**
@@ -146,6 +154,19 @@ http://localhost:5000
 | POST   | `/api/v1/stream` | Upload file |
 | DELETE | `/api/v1/stream` | Delete file |
 
+**Note:**  
+To **download** any uploaded file, concatenate the file `url` with:
+```
+https://hjrkjcfhkhesbbkkjoon.supabase.co/storage/v1/object/public/3pillars/
+```
+
+Example:
+If the `url` returned is `user/photos/image1.png`,  
+the full download URL will be:
+```
+https://hjrkjcfhkhesbbkkjoon.supabase.co/storage/v1/object/public/3pillars/user/photos/image1.png
+```
+
 ---
 
 ## 📊 Example Contact JSON
@@ -159,7 +180,7 @@ http://localhost:5000
   "address": "Cairo, Egypt",
   "email": "john.doe@example.com",
   "password": "StrongPass123!",
-  "photoUrl": "https://domain.com/storage/photo.jpg"
+  "photoUrl": "user/photos/image1.png"
 }
 ```
 
@@ -173,10 +194,15 @@ Response:
 ```json
 {
   "name": "users.xlsx",
-  "url": "storage/exports/users.xlsx",
+  "url": "exports/users.xlsx",
   "size": 10240,
   "extensaion": ".xlsx"
 }
+```
+
+Download link:
+```
+https://hjrkjcfhkhesbbkkjoon.supabase.co/storage/v1/object/public/3pillars/exports/users.xlsx
 ```
 
 ---
@@ -185,7 +211,7 @@ Response:
 - **No Visual Studio scaffolding** was used.
 - Fully **responsive** design supported by the frontend.
 - All forms include **validation** for correct data entry.
-- Deployment-ready for free hosting (e.g., [SmarterASP.net](https://www.smarterasp.net/)).
+- Deployment-ready for free hosting using **MonsterASP SQL Server free plan**.
 
 ---
 
