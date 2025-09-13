@@ -39,7 +39,7 @@ It provides a set of RESTful APIs to manage address book entries, including CRUD
   - Add or edit records **without page reload** (SPA-friendly APIs).
 
 - **Architecture**
-  - Built using **N-Tier/Onion Architecture** for maintainability and scalability.
+  - Built using **Clean Architecture** for maintainability and scalability.
   - **Code-First EF Core** approach to generate the database.
 
 - **Supabase Storage**
@@ -217,7 +217,7 @@ https://hjrkjcfhkhesbbkkjoon.supabase.co/storage/v1/object/public/3pillars/expor
 
 ## 🧑‍💻 Author
 **Ahmed Adel Basha**  
-.NET Backend Developer | [GitHub](https://github.com/ahmedadelbasha)
+.NET Backend Developer | [GitHub](https://github.com/ahmed1672003)
 
 ---
 © 2025 Ahmed Adel Basha
